@@ -1,0 +1,25 @@
+{
+  "name": "jenova",
+  "version": "0.0.1",
+  "description": "A game of life module that is intended to work both in a server side and client side environment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheIronDeveloper/jenova.git"
+  },
+  "keywords": [
+    "Game",
+    "of",
+    "Life",
+    "webpack"
+  ],
+  "author": "Tyler Stark <TheIronDeveloper@gmail.com> (http://www.theirondeveloper.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheIronDeveloper/jenova/issues"
+  },
+  "homepage": "https://github.com/TheIronDeveloper/jenova"
+}
