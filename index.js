@@ -1,10 +1,10 @@
 
 var compress = require('./lib/compress'),
 	expand = require('./lib/expand'),
-	generateNext = require('./lib/generateNext');
+	next = require('./lib/next');
 
 module.exports = {
 	compress: compress,
 	expand: expand,
-	generateNext: generateNext
+	next: next
 };
