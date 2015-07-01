@@ -9,7 +9,7 @@ describe('Compress', function() {
 		var sampleMatrix = [[1,0,0], [1, 1, 0], [1,1,0]],
 			result = compress(sampleMatrix);
 
-		assert.equal(result.compressed, 310);
+		assert.equal(result.compressed, 'ᢘఌ☸䀰\u0000老');
 		assert.equal(result.width, 3);
 		assert.equal(result.height, 3);
 	});
@@ -19,7 +19,7 @@ describe('Compress', function() {
 		var sampleMatrix = [[0,0,0], [0,0,0], [1,0,0], [1, 1, 0], [1,1,0]],
 			result = compress(sampleMatrix);
 
-		assert.equal(result.compressed, 310);
+		assert.equal(result.compressed, 'ᡢ䁌☆̓ภఀ耀');
 		assert.equal(result.height, 5);
 	});
 });
