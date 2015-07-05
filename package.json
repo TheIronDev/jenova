@@ -11,9 +11,8 @@
     "url": "https://github.com/TheIronDeveloper/jenova.git"
   },
   "keywords": [
-    "Game",
-    "of",
-    "Life",
+    "Game of Life",
+    "Conway",
     "webpack"
   ],
   "author": "Tyler Stark <TheIronDeveloper@gmail.com> (http://www.theirondeveloper.com/)",
