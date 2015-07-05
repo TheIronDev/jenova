@@ -90,4 +90,31 @@ describe('Next', function() {
 			});
 		});
 	});
+
+	describe('still lifes should remain unchanged', function() {
+
+		function testStillLife(stillLife, done) {
+			next(stillLife, function(result) {
+				assert.deepEqual(result, stillLife);
+				done();
+			});
+		}
+
+		it('block', function(done) {
+			var stillLife = [[0,0,0,0], [0,1,1,0], [0,1,1,0], [0,0,0,0]];
+			testStillLife(stillLife, done);
+		});
+		it('beehive', function(done) {
+			var stillLife = [[0,0,0,0,0,0], [0,0,1,1,0,0], [0,1,0,0,1,0], [0,0,1,1,0,0], [0,0,0,0,0,0]];
+			testStillLife(stillLife, done);
+		});
+		it('loaf', function(done) {
+			var stillLife = [[0,0,0,0,0,0], [0,0,1,1,0,0], [0,1,0,0,1,0], [0,0,1,0,1,0], [0,0,0,1,0,0], [0,0,0,0,0,0]];
+			testStillLife(stillLife, done);
+		});
+		it('boat', function(done) {
+			var stillLife = [[0,0,0,0,0], [0,1,1,0,0], [0,1,0,1,0], [0,0,1,0,0], [0,0,0,0,0]];
+			testStillLife(stillLife, done);
+		});
+	});
 });
