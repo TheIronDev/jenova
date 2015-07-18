@@ -9,7 +9,42 @@ A game of life module that is intended to work both in a server side and client 
 **Browser**:
 
 ```javascript
-// TODO: Implement me :)
+
+// Using WebPack
+var jenova = require("jenova");
+
+var initialBoard = [
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 1, 1, 1, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+];
+
+function generateBoard(board, canvas) {
+
+	var ctx = canvas.getContext('2d'),
+		width = canvas.width,
+		height = canvas.height,
+		cellHeight = height/ board.length,
+		cellWidth = width / board[0].length;
+
+	// Loop through the board and draw each cell
+	board.forEach(function(row, rowIndex) {
+		row.forEach(function(col, colIndex) {
+			ctx.fillStyle = col ? '#ccc' : '#fff';
+			ctx.fillRect(colIndex*cellWidth, rowIndex*cellHeight, cellWidth, cellHeight);
+			ctx.strokeRect(colIndex*cellWidth, rowIndex*cellHeight, cellWidth, cellHeight);
+		});
+	});
+
+	// Finally Generate a new board, with a callback to redraw it
+	jenova.next(board, function(newBoard) {
+		setTimeout(generateBoard.bind(this, newBoard, canvas), 200);
+	});
+}
+
+window.requestAnimationFrame(generateBoard.bind(this, initialBoard, document.getElementById('myCanvas')));
 ```
 
 **Node**:
@@ -36,4 +71,8 @@ var myBoard = [
     [0, 1, 1],
     [0, 0, 0]
 ];
+
+jenova.next(myBoard, function(nextBoard){
+    // ...
+});
 ```
