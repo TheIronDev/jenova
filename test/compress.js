@@ -11,7 +11,6 @@ describe('Compress', function() {
 
 		assert.equal(result.compressed, 'ᢘఌ☸䀰\u0000老');
 		assert.equal(result.width, 3);
-		assert.equal(result.height, 3);
 	});
 
 	it('should compress a matrix with padded 0s', function() {
@@ -20,6 +19,5 @@ describe('Compress', function() {
 			result = compress(sampleMatrix);
 
 		assert.equal(result.compressed, 'ᡢ䁌☆̓ภఀ耀');
-		assert.equal(result.height, 5);
 	});
 });
