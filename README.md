@@ -106,3 +106,4 @@ socket.on('newBoard', function (compressedBoard) {
 ## Notes
 
 [The test cases](https://github.com/TheIronDeveloper/jenova/tree/master/test) also serve as pseudo-documentation
+A websocket example can be found here: https://github.com/TheIronDeveloper/websocket-of-life
