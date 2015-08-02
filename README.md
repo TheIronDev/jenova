@@ -94,6 +94,7 @@ function generateBoard(board) {
 ```javascript
 
 var gameOfLifeCanvas = document.getElementById('gameOfLife');
+var socket = io.connect('http://localhost:3000');
 
 socket.on('newBoard', function (compressedBoard) {
 	var newBoard = jenova.expand(compressedBoard.compressed, compressedBoard.width);
@@ -104,4 +105,4 @@ socket.on('newBoard', function (compressedBoard) {
 
 ## Notes
 
-[The test cases](https://github.com/TheIronDeveloper/jenova/tree/master/test) also server as pseudo-documentation
+[The test cases](https://github.com/TheIronDeveloper/jenova/tree/master/test) also serve as pseudo-documentation
