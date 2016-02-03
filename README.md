@@ -21,7 +21,7 @@ var myBoard = [
     [0, 0, 0]
 ];
 
-jenova.next(myBoard, function(nextBoard){});
+jenova.next(myBoard, {}, function(nextBoard){});
 
 ```
 
@@ -59,7 +59,7 @@ function generateBoard(board, canvas) {
 	});
 
 	// Finally Generate a new board, with a callback to redraw it
-	jenova.next(board, function(newBoard) {
+	jenova.next(board, {}, function(newBoard) {
 		setTimeout(generateBoard.bind(this, newBoard, canvas), 200);
 	});
 }
@@ -81,7 +81,7 @@ var initialBoard = [
 ];
 
 function generateBoard(board) {
-	jenova.next(board, function(newBoard) {
+	jenova.next(board, {}, function(newBoard) {
 		io.emit('newBoard', jenova.compress(newBoard));
 		setTimeout(generateBoard.bind(this, newBoard), 1000);
 	});
