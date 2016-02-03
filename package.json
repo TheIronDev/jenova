@@ -1,6 +1,6 @@
 {
   "name": "jenova",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A game of life module that is intended to work both in a server side and client side environment.",
   "main": "index.js",
   "scripts": {
