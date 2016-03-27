@@ -9,6 +9,7 @@ This module exposes 3 functions.
 1. **compress** - Given a board array, return a compressed value and board-width
 2. **expand** - Given a compressed value and width, return a board array
 3. **next** - Given a board array, calculate the next "step", and return it in a callback function
+4. **draw** - Given a Dom node, and some config, render a game of life board animation.
 
 All three functions make use of an matrix consisting of 0s and 1s.
 
