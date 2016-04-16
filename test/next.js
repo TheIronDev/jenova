@@ -181,6 +181,67 @@ describe('Next', function() {
 		});
 	});
 
+	describe('should follow a custom updateCell rules', function() {
+
+		// Note: we aren't making use of the born/surive maps, we're using our own custom logic instead
+		var options = {
+			updateCell: function(cell, neighborCount) {
+				if (neighborCount === 0 && cell !== 0) {
+					return cell + 1;
+				}
+				return cell;
+			}
+		};
+
+		it('increment with no neighbors', function(done) {
+
+			var zeroNeighbors = [[0,0,0,0,0], [0,0,0,0,0], [0,0,1,0,0], [0,0,0,0,0], [0,0,0,0,0]];
+			var expected1 = [[0,0,0,0,0], [0,0,0,0,0], [0,0,2,0,0], [0,0,0,0,0], [0,0,0,0,0]];
+			var expected2 = [[0,0,0,0,0], [0,0,0,0,0], [0,0,3,0,0], [0,0,0,0,0], [0,0,0,0,0]];
+
+			next(zeroNeighbors, options, function(firstResult) {
+
+				assert.deepEqual(firstResult, expected1);
+
+				next(firstResult, options, function(secondResult) {
+					assert.deepEqual(secondResult, expected2);
+					done();
+				});
+			});
+		});
+	});
+
+	describe('should follow a custom born/survival map over default rules', function() {
+
+		// Note we aren't making use of the born map, it isn't a hard requirement
+		var options = {
+			bornMap: {
+				1: true
+			},
+			surviveMap: {
+				2: true
+			}
+		};
+
+		it('born with 1 neighbor, only survive with 2', function(done) {
+
+			var zeroNeighbors = [[0,0,0,0,0], [0,0,0,0,0], [0,0,1,0,0], [0,0,0,0,0], [0,0,0,0,0]];
+			var expected = [[0,0,0,0,0], [0,1,1,1,0], [0,1,0,1,0], [0,1,1,1,0], [0,0,0,0,0]];
+			var expected2 = [[1,0,0,0,1], [0,1,0,1,0], [0,0,0,0,0], [0,1,0,1,0], [1,0,0,0,1]];
+
+
+			next(zeroNeighbors, options, function(result) {
+
+				assert.deepEqual(result, expected);
+				next(result, options, function(result2) {
+
+					assert.deepEqual(result2, expected2);
+					done();
+				});
+			});
+		});
+	});
+
 	describe('still lifes should remain unchanged', function() {
 
 		function testStillLife(stillLife, done) {
