@@ -1,8 +1,15 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-a {
-  color: #00B7FF;
+body {
+  display: flex;
+  align-items: center;
+}
+
+.from-the-skies {
+  margin: 0 auto;
 }
