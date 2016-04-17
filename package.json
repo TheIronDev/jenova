@@ -4,7 +4,8 @@
   "description": "A game of life module that is intended to work both in a server side and client side environment.",
   "main": "index.js",
   "scripts": {
-    "prepublish": "npm test",
+    "prepublish": "npm test; npm run lint",
+    "lint": "eslint **/**.js",
     "test": "mocha"
   },
   "repository": {
@@ -24,6 +25,8 @@
   "homepage": "https://github.com/TheIronDeveloper/jenova",
   "devDependencies": {
     "assert": "^1.3.0",
+    "eslint": "^2.8.0",
+    "eslint-config-defaults": "^9.0.0",
     "mocha": "^2.2.5"
   },
   "dependencies": {
