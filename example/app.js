@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var webpackMiddleware = require('webpack-dev-middleware'),
 	webpack = require('webpack'),
@@ -32,7 +31,6 @@ app.use(webpackMiddleware(compiler, {
 }));
 
 app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

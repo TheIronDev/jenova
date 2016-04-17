@@ -11,7 +11,8 @@ This module exposes 3 functions.
 3. **next** - Given a board array, calculate the next "step", and return it in a callback function
 4. **draw** - Given a Dom node, and some config, render a game of life board animation.
 
-All three functions make use of an matrix consisting of 0s and 1s.
+All three functions make use of an matrix. The default behavior expects 1s and 0s, but you can change how the config
+updates.
 
 **Example Board**:
 
@@ -26,9 +27,7 @@ jenova.next(myBoard, {}, function(nextBoard){});
 
 ```
 
-## Example Usage
-
-### Browser-Only
+### Browser Example
 
 ```javascript
 
@@ -42,33 +41,10 @@ var initialBoard = [
 	[0, 0, 0, 0, 0]
 ];
 
-function generateBoard(board, canvas) {
-
-	var ctx = canvas.getContext('2d'),
-		width = canvas.width,
-		height = canvas.height,
-		cellHeight = height/ board.length,
-		cellWidth = width / board[0].length;
-
-	// Loop through the board and draw each cell
-	board.forEach(function(row, rowIndex) {
-		row.forEach(function(col, colIndex) {
-			ctx.fillStyle = col ? '#ccc' : '#fff';
-			ctx.fillRect(colIndex*cellWidth, rowIndex*cellHeight, cellWidth, cellHeight);
-			ctx.strokeRect(colIndex*cellWidth, rowIndex*cellHeight, cellWidth, cellHeight);
-		});
-	});
-
-	// Finally Generate a new board, with a callback to redraw it
-	jenova.next(board, {}, function(newBoard) {
-		setTimeout(generateBoard.bind(this, newBoard, canvas), 200);
-	});
-}
-
-window.requestAnimationFrame(generateBoard.bind(this, initialBoard, document.getElementById('myCanvas')));
+jenova.draw('myCanvasId', initialBoard);
 ```
 
-### Server-to-Browser (using WebSockets)
+### WebSockets Example
 
 **Server:**
 
@@ -106,5 +82,6 @@ socket.on('newBoard', function (compressedBoard) {
 
 ## Notes
 
-[The test cases](https://github.com/TheIronDeveloper/jenova/tree/master/test) also serve as pseudo-documentation
-A websocket example can be found here: https://github.com/TheIronDeveloper/websocket-of-life
+* [The test cases](https://github.com/TheIronDeveloper/jenova/tree/master/test) also serve as pseudo-documentation.
+* A websocket example can be found here: https://github.com/TheIronDeveloper/websocket-of-life
+* Additionally, the `/examples` directory is vanilla express app with an example of `jenova.draw` 
