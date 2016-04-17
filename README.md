@@ -1,4 +1,4 @@
-# Jenova ![Travis CI](https://travis-ci.org/TheIronDeveloper/jenova.svg)
+# <img align="right" height="50" src="https://raw.githubusercontent.com/TheIronDeveloper/jenova/master/images/jenova.png"> Jenova ![Travis CI](https://travis-ci.org/TheIronDeveloper/jenova.svg)
 
 A game of life module that is intended to work both in a server side and client side environment.
 
